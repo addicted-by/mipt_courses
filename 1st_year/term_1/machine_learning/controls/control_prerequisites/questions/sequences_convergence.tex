@@ -1,0 +1,71 @@
+\section{Sequence. Convergence of sequences.}
+Let $x: \ \N \to \R$. Then we can say that sequence was defined and there is a valid notation: $x(n) = x_n$.
+
+\begin{definition}{}{}
+    Let $\left\{x_n\right\}_{n=1}^\infty \subset \R$ some sequence, we can say that it converge to $l \in \R \ (\text{ or } l = \lim\limits_{n\to \infty}x)$, iff:
+    \[
+        (\forall \varepsilon > 0) (\exists N \in \N) (\forall n > N) \ |x_n - l| < \varepsilon
+    \] 
+\end{definition}
+
+\Ex 
+\[
+    \begin{array}{c}
+       \lim\limits_{n\to \infty} \dfrac{1}{n} = 0 \Longleftrightarrow \\
+       \Leftrightarrow (\forall \varepsilon > 0) (\exists N \in \N)(\forall n > N): \ \left|\dfrac{1}{n} \right| < \varepsilon \Longleftrightarrow \\
+       \Leftrightarrow n> \dfrac{1}{\varepsilon}, \ N = \left[ \dfrac{1}{\varepsilon}\right] + 1. \\ (\forall \varepsilon > 0) \left(N = \left[\dfrac{1}{\varepsilon}\right] + 1 \in \N\right) (\forall n > N) n > N \longrightarrow \\ \rightarrow n > 
+       \dfrac{1}{\varepsilon} \Rightarrow \dfrac{1}{n} < \varepsilon.
+    \end{array}  
+\]
+\begin{theorema}{}{}
+  Numeric sequence can't have more than one limit.  
+\end{theorema}
+
+\begin{theorema}{Properties of limit of consequence}{}
+    Let $\{x_n\}_{n=1}^\infty$ some sequence. We can define some properties of it:
+    \begin{itemize}
+        \item if $\{x_n\}_{n=1}^\infty$ converges then $\{x_n\}_{n=1}^\infty$ is bounded;
+        \item if $\lim\limits_{n\to \infty} x_n = l \neq 0$, then 
+        \useshortskip
+        \[
+            \begin{array}{c}
+                (\exists N \in \N) (\forall n > N)\\
+                (\sign (x_n) = \sign(l)) \wedge |x_n| > \dfrac{|l|}{2};
+            \end{array}
+        \]
+        \item if $\lim\limits_{n\to \infty} x_n = l_1, \ \lim\limits_{n\to \infty} y_n = l_2$:
+        \useshortskip
+        \[
+            (\forall n \in \N) \ x_n \leq y_n \Rightarrow l_1 \leq l_2  
+        \]
+        \item if $\lim\limits_{n\to \infty} x_n = \lim\limits_{n\to \infty} z_n = l$:
+        \[
+            (\forall n \in \N) x_n \leq y_n \leq z_n   
+        \]
+        then $\lim\limits_{n\to \infty} y_n = 1$.
+    \end{itemize}
+\end{theorema}
+
+\begin{theorema}{Arithmetic operations with limits}{}
+    If $\lim\limits_{n\to \infty} x_n = l_1, \ \lim\limits_{n\to\infty} y_n = l_2$, then:
+    \begin{itemize}
+        \item $x_n \pm y_n$ converges to $l_1 \pm l_2$;
+        \item $x_n\cdot y_n$ converges to $l_1\cdot l_2$;
+        \item if in addition $y_n \neq 0$, then $(\forall n \in \N), \ l_2 \neq 0$, then $\dfrac{x_n}{y_n}$ converges to $\dfrac{l_1}{l_2}$.
+    \end{itemize}
+\end{theorema}
+\begin{definition}{Infinitesimal}{}
+    Infinitesimal sequence is called sequence converged to zero.
+\end{definition}
+
+\begin{theorema}{}{}
+  Product of an infinitesimal sequence and bounded one is infinitesimal.  
+\end{theorema}
+
+\begin{definition}
+    Infinitely large sequence is called a sequence with infinite limit.
+\end{definition}
+
+\begin{theorema}{}{}
+  $\{x_n\}_{n=1}^\infty \subset \R \backslash \{0\}$ infinitesimal iff $\left\{\dfrac{1}{x_n}\right\}_{n=1}^\infty$ infinitely large.
+\end{theorema}
