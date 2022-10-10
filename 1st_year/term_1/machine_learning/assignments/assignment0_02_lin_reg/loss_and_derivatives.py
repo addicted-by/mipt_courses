@@ -33,7 +33,7 @@ class LossAndDerivatives:
         """
 
         # YOUR CODE HERE    
-        return 
+        return np.mean(np.abs(X.dot(w) - Y))
 
     @staticmethod
     def l2_reg(w):
@@ -47,7 +47,7 @@ class LossAndDerivatives:
         """
         
         # YOUR CODE HERE
-        return 
+        return np.sum(w**2)
 
     @staticmethod
     def l1_reg(w):
@@ -61,7 +61,7 @@ class LossAndDerivatives:
         """
 
         # YOUR CODE HERE
-        return 
+        return np.sum(np.abs(w))
 
     @staticmethod
     def no_reg(w):
@@ -85,9 +85,13 @@ class LossAndDerivatives:
         Please mention, that in case `target_dimentionality` > 1 the error is averaged along this
         dimension as well, so you need to consider that fact in derivative implementation.
         """
-
-        # YOUR CODE HERE
-        return 
+        
+        # YOUR CODE HERE 
+        if len(w.shape) > 1:
+            target_dimension = w.shape[1]
+        else:
+            target_dimension = 1
+        return 2 / (X.shape[0] * target_dimension) * (X.T @ (X.dot(w) - Y))
 
     @staticmethod
     def mae_derivative(X, Y, w):
@@ -106,7 +110,11 @@ class LossAndDerivatives:
         """
 
         # YOUR CODE HERE
-        return 
+        if len(w.shape) > 1:
+            target_dimension = w.shape[1]
+        else:
+            target_dimension = 1
+        return 1 / (X.shape[0] * target_dimension) * X.T @ (np.sign(X.dot(w) - Y))
 
     @staticmethod
     def l2_reg_derivative(w):
@@ -119,7 +127,7 @@ class LossAndDerivatives:
         """
 
         # YOUR CODE HERE
-        return 
+        return 2 * w
 
     @staticmethod
     def l1_reg_derivative(w):
@@ -133,7 +141,7 @@ class LossAndDerivatives:
         """
 
         # YOUR CODE HERE
-        return 
+        return np.sign(w)
 
     @staticmethod
     def no_reg_derivative(w):

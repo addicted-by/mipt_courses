@@ -8,7 +8,8 @@ Let $x: \ \N \to \R$. Then we can say that sequence was defined and there is a v
     \] 
 \end{definition}
 
-\Ex 
+\example 
+\useshortskip
 \[
     \begin{array}{c}
        \lim\limits_{n\to \infty} \dfrac{1}{n} = 0 \Longleftrightarrow \\
@@ -39,9 +40,11 @@ Let $x: \ \N \to \R$. Then we can say that sequence was defined and there is a v
             (\forall n \in \N) \ x_n \leq y_n \Rightarrow l_1 \leq l_2  
         \]
         \item if $\lim\limits_{n\to \infty} x_n = \lim\limits_{n\to \infty} z_n = l$:
+        \useshortskip
         \[
             (\forall n \in \N) x_n \leq y_n \leq z_n   
         \]
+        \useshortskip
         then $\lim\limits_{n\to \infty} y_n = 1$.
     \end{itemize}
 \end{theorema}
@@ -62,10 +65,21 @@ Let $x: \ \N \to \R$. Then we can say that sequence was defined and there is a v
   Product of an infinitesimal sequence and bounded one is infinitesimal.  
 \end{theorema}
 
-\begin{definition}
+\begin{definition}{}{}
     Infinitely large sequence is called a sequence with infinite limit.
 \end{definition}
 
 \begin{theorema}{}{}
   $\{x_n\}_{n=1}^\infty \subset \R \backslash \{0\}$ infinitesimal iff $\left\{\dfrac{1}{x_n}\right\}_{n=1}^\infty$ infinitely large.
+\end{theorema}
+
+\begin{lemma}{}{}
+    \useshortskip
+    \[
+        (\forall x \geq -1) (\forall n \in \N) \ (1 + x)^n \geq 1+nx
+    \]  
+\end{lemma}
+
+\begin{theorema}{}{}
+    Sequence $x_n = \left(1 + \dfrac{1}{n}\right)^n$ converges and its limit named $e$.
 \end{theorema}

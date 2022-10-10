@@ -1,0 +1,59 @@
+\section{Law of total expectation}
+\subsection*{Conditional expectation and conditional variance}
+\par
+Suppose that $X$ and $Y$ are discrete r.v.-s, possibly dependent on each other (the same results hold for continuous r.v.-s too, but will assume for simplicity the first one case). Suppose that we fix $Y$ at the value $y$. This gives us a set of conditional probabilities $P(X = x| Y = y)$. This is called the conditional distribution of $X$, given that $Y = y$.
+
+\begin{definition}{}{}
+    Let $X$ and $Y$ be discrete random variables. The conditional probability function of $X$, given that $Y = y$, is:
+    \[
+        P(X = x| Y = y) = \dfrac{P(X = x \cap Y=y)}{P(Y=y)}  
+    \]
+\end{definition}
+
+\begin{note}{}{}
+    Notation:
+    \useshortskip
+    \[
+        f_{X|Y}(x|y) = P(X = x| Y=y).    
+    \]
+\end{note}
+\begin{definition}{(Conditional expectation)}{}
+    Let $X$ and $Y$ be discrete random variables. The conditional expectation of $X$, given that $Y = y$, is:
+    \[
+        \mu_{X|Y=y}  = \E [X | Y = y] = \sum\limits_{x} xf_{X|Y}(x|y).
+    \] 
+\end{definition}
+\begin{note}{}{}
+    Intuition: $E[X | Y = y]$ is the mean value of $X$, when $Y$ is fixed at $y$.
+\end{note}
+
+\begin{note}{}{}
+    Conditional expectation, $\E (X|Y)$, is a random variable with randomness inherited from $Y$, not $X$.
+\end{note}
+The conditional variance is similar to the conditional expectation:
+\begin{itemize}
+    \item $\var (X| Y = y)$ is the variance of $X$, when $Y$ is fixed at the value $Y = y$;
+    \item $\var (X|Y)$ is a random variable, giving the variance of $X$ when $Y$ is fixed at a value to be selected randomly.
+\end{itemize}
+\begin{definition}{(Conditional variance)}{}
+    Let $X$ and $Y$ be random variables. The conditional variance of $X$, given $Y$, is given by:
+    \[
+        \begin{array}{c}
+            \var (X|Y) = \E (X^2 | Y) - \left\{\E (X|Y)\right\}^2 = \\ = \E \left\{\left(X - \mu_{X|Y}\right)^2 | Y\right\}              
+        \end{array}
+    \]
+\end{definition}
+
+\begin{note}{}{}
+    Like expectation, $\var \left(X | Y =y \right)$ is a number depending on $y$, while $\var (X|Y)$ is a random variable with randomness inherited from $Y$.
+\end{note}
+
+\subsection*{Law of total expectation}
+
+\[
+    \E X = \E_Y \left[X | Y\right],
+\]
+where $\E_Y$ is denoted by expectation over $Y$, i.e. the expectation is computed over the distribution of the random variable $Y$.
+\begin{note}{}{}
+    The law of total expectation says that the total average is the average of case-by-case averages.
+\end{note}

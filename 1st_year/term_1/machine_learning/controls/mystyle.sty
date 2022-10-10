@@ -153,12 +153,14 @@
 \newcommand{\bigOO}{{\cal O}}
 \newcommand{\dataset}{{\cal D}}
 \renewcommand{\tr}{\operatorname{tr}}
+\renewcommand{\var}{\operatorname{var}}
 \newcommand{\X}{\mathbf{X}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
 \newcommand{\calB}{\mathcal{B}}
 \newcommand{\calF}{\mathcal{F}}
 \newcommand{\calG}{\mathcal{G}}
@@ -170,6 +172,7 @@
 \setcounter{excounter}{1}
 \newcommand{\Exc}[1]{\myred{Exercise:} #1 \hfill{\myred{!!!}}}
 \newcommand{\Ex}{\textbf{Example \theexcounter \stepcounter{excounter}: }}
+\newcommand{\example}{\textbf{Example: }}
 \newcommand{\contr}{\overline{\mathbb R}}
 \newcommand{\bin}{\operatorname{Bin}}
 \newcommand{\poiss}{\operatorname{Poiss}}
@@ -193,7 +196,7 @@
 \DeclareMathOperator{\indeg}{indeg}
 \DeclareMathOperator{\outdeg}{outdeg}
 \newcommand{\eps}{\varepsilon}
-\newcommand {\argmax}[2]{\mbox{\raisebox{-1.7ex}{$\stackrel{\textstyle{\rm #1}}{\scriptstyle #2}$}}\,}  % to replace with the amsmath construction
+\newcommand{\argmax}[2]{\mbox{$\underset{#1}{\operatorname{argmax}}\ #2$}}
 \newlength{\picwi}
 \newcommand{\backskip}{\hspace{-2.5em}} % how much to skip back for an empty item?
 
@@ -332,6 +335,10 @@ theorem name,
 }
 \newtcbtheorem{proposition}{Prop}
 {prop=black}{pr}
+
+\newtcbtheorem{thesis}{}
+{prop=black}{pr}
+
 
 \usetikzlibrary{calc}
 \usetikzlibrary{patterns}
@@ -494,7 +501,7 @@ to[curve to,out=180,in=90]($(B)+(-5mm,-5mm)$)coordinate(C)
 \fancyhead{}
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
 \fancyfoot[R]{v1.0}
-\fancyfoot[C]{\thepage}
+\fancyfoot[C]{--\thepage--}
 \fancyfoot[L]{2022}
 \setoperatorfont\myfont
 \titleformat{\subsubsection}{\normalsize \color{myblue}}{}{}{#1}

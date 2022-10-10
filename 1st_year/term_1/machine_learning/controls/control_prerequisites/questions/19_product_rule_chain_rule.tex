@@ -1,0 +1,17 @@
+\section{Product rule and chain rule of probability}
+\subsection*{Product rule}
+\par 
+We define the conditional distribution of an r.v. using:
+\[
+    P(Y = y | X = y) = \dfrac{P(X = x, Y = y)}{P(X = x)}
+\]
+We can rearrange this equation to get:
+\[
+    P(x,y) = P(x)P(y|x)  
+\]
+\subsection*{Chain rule of probability}
+\par 
+By extending the product rule to $D$ variables, we obtain the chain rule of probability:
+\[
+    P(x_{1:D}) = P(x_1)P(x_2 | x_1) P(x_3 | x_1, x_2) \cdot \ldots \cdot P(x_D| x_{1:D-1})  
+\]

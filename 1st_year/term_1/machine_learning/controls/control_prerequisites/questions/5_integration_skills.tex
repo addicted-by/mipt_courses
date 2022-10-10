@@ -1,0 +1,202 @@
+\section{Basic integration skills}
+\subsection*{Antiderivatives of basic functions}
+
+\subsubsection*{Power rule}
+\[
+    \int x^n dx = \left\{
+            \begin{array}{ll}
+                \dfrac{x^{n+1}}{n+1} + C, & \text{ if } n \neq -1 \\[0.5cm]
+                \ln |x| + C, & \text{otherwise}.
+            \end{array}
+        \right.  
+\]
+\subsubsection*{Exponential functions}
+\par
+With base $a$:
+\[
+     \int a^x dx = \dfrac{a^x}{\ln(a)} + C.       
+\]
+With base $e$, this becomes:
+\[
+    \int e^x dx = e^x + C.
+\]
+If we have base $e$ and a linear function in the exponent, then:
+\[
+    \int e^{ax+b} dx = \dfrac{1}{a} e^{ax+b} + C.
+\]
+
+\subsubsection*{Trigonometric functions}
+
+\[
+    \begin{array}{ll}
+        \int \sin x dx = -\cos x + C, & \int \cos x dx = \sin x + C,\\[0.5cm]
+        \int \sec^2 x dx = \tan x + C, & \int \csc^2 x dx = -\cot x + C, \\[0.5cm]
+        \int \sec x \tan x dx = \sec x + C, & \begin{array}{c} \int \csc x \cot x dx = \\ = - \csc x + C.
+        \end{array}
+    \end{array}
+\]
+
+\subsubsection*{Inverse trigonometric functions}
+
+\[
+    \begin{array}{c}
+        \displaystyle\int \dfrac{1}{\sqrt{1 - x^2}}dx = \arcsin x + C,\\[0.5cm]
+        \displaystyle\int \dfrac{1}{x\sqrt{x^2 - 1}}dx = \arcsec x + C,\\[0.5cm]
+        \displaystyle \int \dfrac{1}{1+x^2} dx = \arctan x + C,\\[0.5cm]
+        \displaystyle \int \dfrac{1}{a^2 + x^2} dx = \dfrac{1}{a} \arctan \left(\dfrac{x}{a}\right) + C.
+    \end{array}  
+\]
+
+\subsubsection*{Hyperbolic functions}
+
+\[
+    \begin{array}{c}        
+        \displaystyle\begin{array}{ll}
+            \int \sinh x dx \cosh x + C, & \int \cosh x dx = \sinh x + C, \\[0.5cm]
+            \int \sech^2 x dx = \tanh x + C, & \int -\csch^2 x dx = \coth x + C,
+        \end{array}  \\[1cm]
+        \int -\csch x \coth x dx = \csch x + C,\\[0.5cm]
+        \int \sech x \tanh x dx = \sech x + C.
+    \end{array}
+\]
+
+\subsection*{Integration techniques}
+
+\subsubsection*{u-substitution}
+\par 
+If $u = g(x)$ is a differentiable function whose range is an interval $I$ and $f$ is continuous on $I$, then:
+\[
+    \int f\left(g(x)\right)g'(x) dx = \int f(u)du.  
+\]
+\subsubsection*{Integration by parts}
+\par 
+Recall the product rule:
+\[
+    \dfrac{d}{dx} \left[ u(x)v(x)\right] = v(x) \dfrac{du}{dx} + u(x) \dfrac{dv}{dx}.  
+\]
+\par
+Integrating both sides leads to the following equation:
+\[
+    uv = \int u dv + \int v du,  
+\]
+from which one we can obtain the standard formula for integration by parts:
+\[
+    \int   u dv = uv - \int v du.
+\]
+\par 
+If exists some troubles deciding what $u$ and $dv$ should be to accomplish an integral simplification, we can use rules ``LIATE'' to choose $u$:
+\begin{itemize}
+    \item Logarithmic;
+    \item Inverse trigonometric;
+    \item Algebraic, i.e. polynomials and rational functions;
+    \item Trigonometric;
+    \item Exponential,
+\end{itemize}
+and then whatever is left is $dv$. 
+\subsubsection*{Trigonometric integrals}
+\par 
+For integrals involving only powers of sine and cosine (both with the same argument):
+\begin{itemize}
+    \item If at least one of them is raised to an odd power, pull of one to save for a u-substitution, use a Pythagorean identity \mbox{($\cos^2 x + \sin^2 x = 1$)} to convert the remaining (not even) power to the other trigonometric function, then make a u-substitution with $u =$ (whichever trigonometric function you didn't save) and the trigonometric function you set aside will be part of $du$;
+    \item If they are both raised to an even power, use a half-angle formulae \mbox{$\cos^2 x = \dfrac{1 + \cos 2x}{2}$} or \mbox{$\sin^2 x = \dfrac{1-\cos 2x}{2}$} to convert to cosines, expand the result and apply half-angle formulas again
+    if needed (keep doing this until you no longer have any powers of cosine), then integrate (may need a simple u-sub).
+\end{itemize}
+\par 
+For integrals involving only powers of secant and tangent (both with the same argument):
+\begin{itemize}
+    \item If the secant is raised an even power, pull off two of them to save for a u-substitution, use the Pythagorean identity \mbox{$(\sec^2 x = 1 + \tan^2 x)$} to convert the remaining powers to tangents, then make a u-substitution with $u = \tan x$ and the $\sec^2 x$ you set aside earlier will be part of $du$;
+    \item If the tangent is raised to an odd power, pull off one of each to save for a u-substitution, use the Pythagorean identity \mbox{$(\tan^2 x = \sec^2 x - 1)$} to convert the remaining powers to tangent, then make a u-substitution with $u = \sec x$ and the $\sec x \tan x$ you set aside earlier will be part of $du$.
+\end{itemize}
+\subsubsection*{Trigonometric substitutions}
+\par
+With certain integrals we can use right triangles to help us determine a helpful substitutions:
+\par
+If the integral contains an expression of the form
+\begin{enumerate*}
+    \item $\sqrt{a^2 - x^2}$, then make a substitution: 
+    \useshortskip
+    \[
+        \begin{array}{c}
+            x = a\sin \theta \\
+            dx = a\cos \theta d\theta
+        \end{array};
+    \]
+    \item $\sqrt{a^2 + x^2}$, then make a substitution:
+    \useshortskip
+    \[
+        \begin{array}{c}
+            x = a\tan \theta \\
+            dx = a\sec^2 \theta d\theta
+        \end{array};
+    \]
+    \item $\sqrt{x^2 - a^2}$, then make a substitution:
+    \useshortskip
+    \[
+        \begin{array}{c}
+            x = a\sec \theta \\
+            dx = a\sec \theta \tan \theta d\theta
+        \end{array}  
+    \]
+\end{enumerate*}
+
+\subsubsection*{Partial fraction decomposition}
+\par
+Given a rational function to integrate, follow these steps:
+\begin{enumerate}
+    \item If the degree of the numerator is greater than or equal to that of the denominator perform long division;
+    \item Factor the denominator into unique linear factors or irreducible quadratics;
+    \item Split the rational function into a sum of partial fractions with unknown constants on top as follows:
+    \[
+        \begin{array}{c}
+            \underbrace{\dfrac{A}{ax+b}}_{\text{ for a linear factor}} + \underbrace{\dfrac{B}{cx+d} + \dfrac{C}{\left(cx + d\right)^2} + \ldots}_{\text{for a repeated linear factor}} + \\[1cm] + \underbrace{\dfrac{Dx + E}{ex^2 + fx + g}}_{\text{for an irreducible quadratic}}; 
+        \end{array}
+    \] 
+    \item Multiply both sides by the entire denominator and simplify;
+    \item Solve for the unknown constants by using a system of equations or picking appropriate numbers to substitute in for $x$;
+    \item Integrate each partial fraction.
+\end{enumerate}
+\begin{note}{}{}
+    Helpful substitution:
+    \useshortskip
+    \[
+        \int \dfrac{1}{x^2 + a^2} dx = \dfrac{1}{a}\tan^{-1} \left(\dfrac{x}{a} \right) + C.  
+    \]
+\end{note}
+\subsubsection*{Euler substitution}
+\par 
+Euler substitution is a method for evaluating integrals of the form:
+\[
+    \int R(x, \ \sqrt{ax^2 + bx +c})dx,  
+\]
+where $R$ is a rational function.
+
+\subsubsection*{Euler's  first substitution}
+\par 
+The first substitution of Euler is used when $a> 0$. We substitute:
+\[
+    \sqrt{ax^2+bx+c} = \pm x \sqrt{a} + t  
+\]
+and solve the resulting expression for $x$. We have that $x = \dfrac{c-t^2}{\pm 2t\sqrt{a} - b}$ and that the $dx$ term is expressible rationally in $t$.
+
+\subsubsection*{Euler's  second substitution}
+\par
+If $c>0$, we take:
+\[
+    \sqrt{ax^2 + bx + c} = xt \pm \sqrt{c}.  
+\]
+We solve for $x$ similarly as above and find:
+\[
+    x = \dfrac{\pm 2t \sqrt{c} - b}{a - t^2}.  
+\]
+
+\subsubsection*{Euler's third substitution}
+\par 
+If the polynomial $ax^2 + bx + c$ has real roots $\alpha$ and $\beta$, we may choose:
+\[
+    \sqrt{ax^2+bx + c} = \sqrt{a(x-\alpha)(x-\beta)} = (x-\alpha)t. 
+\]
+This yields 
+\[
+    x = \dfrac{a \beta - \alpha t^2}{a - y^2},  
+\]
+and as in the preceding cases, we can express the entire integrand rationally in $t$.

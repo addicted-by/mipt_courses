@@ -1,0 +1,23 @@
+\section{Bayes theorem}
+\par 
+Bayes' rule is a formula for computing the probability distribution over possible values of an unknown quantity $H$ given some observed data $Y = y$:
+\[
+    P(H = h| Y = y) = \dfrac{P(H = h)P(Y = y | H = h)}{P(Y = y)}.  
+\]
+\par 
+It easily follows from the product rule of probability:
+\[
+    P(h| y)P(y) = P(h)P(y|h) = P(h, y).
+\]
+\par 
+The term $P(H)$ represents what we know about possible values of $H$ before we see any data: this is called the prior distribution. The term $P(Y | H = h)$ represents the distribution over the possible outcomes $Y$ we expect to see if $H = h$; this is called the observation distribution. When we evaluate this at point corresponding to the actual observations, $y$, we get the function $P(Y = y| H = h)$, which is called the likelihood. Multiplying the prior distribution $P(H = h)$ by the likelihood function $P(Y | H = h)$ for each $h$ gives the unnormalized joint distribution $P(H = h, Y = y)$. We can convert this into normalized one by dividing by $P(Y = y)$, which is known as the marginal likelihood, since it is computed by marhinalizing over unknown $H$:
+\[
+    \begin{array}{c}
+    P(Y = y) = \sum \limits_{h' \in \mathcal{H}} P(H = h')P(Y = y| H = h') = \\ =  \sum \limits_{h' \in \mathcal{H}} P(H = h', Y = y).
+    \end{array}
+\]
+\par 
+Normalizing the joint distribution by computing $\dfrac{P(H = h, Y = y)}{P(Y =y)}$ for each $h$ gives the posterior distribution $P(H = h| Y = y)$; this represents our new belief state about the possible values of $H$. To summarize:
+\[
+    \text{posterior } \propto \text{ prior }  \times \text{ likelihood} 
+\]

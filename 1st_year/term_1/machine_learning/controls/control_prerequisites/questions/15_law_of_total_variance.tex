@@ -1,0 +1,26 @@
+\section{Law of total variance}
+
+\begin{theorema}{(Law of total variance)}{}
+    \useshortskip
+    \[
+        \var  X = \E_Y\left[\var (X | Y)\right] + \var_Y \left(\E[X|Y]\right),
+    \]
+    where $\E_Y$ and $\var_Y$ denote expectation over $Y$ and variance over $Y$.
+\end{theorema}
+\par The variance is computed over the distribution of the r.v. $Y$.
+\par
+Let's rationale about the terms:
+\begin{thesis}{}{}
+    What is $\E_Y \left[\var \left(X | Y\right)\right]$?
+\end{thesis}
+\par 
+Is the average of the variance of $X$ over all possible values of the random variable $Y$. In other words: take the variance of $X$ in each conditional space of $Y = y$. Then, take the average of the variances. This is called the average within-sample variance.
+
+\begin{thesis}{}{}
+    What is $\var_Y (\E[X|Y])$?
+\end{thesis}
+\par 
+Note that the first term $\E_Y \left[\var \left(X | Y\right)\right]$, only considers the average of the variances of $X | Y$. That term does not take into account the movement of the mean itself, just the variation about each, possibly varying, mean.
+
+\par
+If we treat each $Y = y$ as a separate ``treatment'', then the first term is measuring the average within-sample variance, while the second is measuring the between-sample variance.

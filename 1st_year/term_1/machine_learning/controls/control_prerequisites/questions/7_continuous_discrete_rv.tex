@@ -1,0 +1,20 @@
+\section{Continuous and discrete random variables}
+\par
+There are two main types of r.v.-s (random variables): discrete and continuous. Let's start from the definition of discrete random variable:
+\begin{definition}{(Discrete random variable)}{}
+    A random variable $X$ is said to be discrete if there is a finite list of values $a_1, a_2, \ldots, a_n$ or an infinite list $a_1, a_2, \ldots$ such that $P(X = a_j \text{ for some } j) = 1$. If $X$ is a discrete r.v., then this finite or countably infinite set of values it takes and such that $P(X = x) > 0$ is called the support of $X$.
+\end{definition}
+
+% \begin{definition}{(Continuous random variable)}{}
+%     Say $X$ is a continuous random variable if there exists a probability density function $f = f_X$ on $\R$ such that:
+%     \[
+%         P\left\{X \in B\right\}  
+%     \]
+% \end{definition}
+
+If $X \in \R$  is a real-valued quantity, it is called a continuous random variable. In this case, we can
+no longer create a finite (or countable) set of distinct possible values it can take on. However, there
+are a countable number of intervals which we can partition the real line into. If we associate events
+with $X$ being in each one of these intervals, we can use the methods discussed above for discrete
+random variables. Informally speaking, we can represent the probability of $X$ taking on a specific
+real value by allowing the size of the intervals to shrink to zero, as we show below.

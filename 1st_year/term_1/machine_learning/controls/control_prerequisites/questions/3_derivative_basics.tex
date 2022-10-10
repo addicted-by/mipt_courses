@@ -1,0 +1,120 @@
+\section{Derivative and basic differential skills}
+Definition of derivative:
+\begin{definition}{(Derivative)}{}
+    Let function $f$ differentiable at a point $a$ of its domain, if its domain contains an open interval containing $a$, and the limit:
+    \[
+         \lim\limits_{\Delta x \to 0} \dfrac{\Delta f}{\Delta x} = \lim\limits_{\Delta x \to 0} \dfrac{f(a+\Delta x) - f(a)}{\Delta x} = f'(a), 
+    \]
+    where $\Delta x$ is an increment of the argument and $\Delta f$ the same for function, exists. And $f'(a)$ is called a derivative.
+\end{definition}
+
+\begin{theorema}{}{}
+    If $\exists f'(a)$ then $f$ is continuous function at a point.
+\end{theorema}
+
+\begin{note}{}{}
+    But the converse is not generally true.
+\end{note}
+
+\example $f(x) = |x|, \ a = 0.$ The limit does not exist, because:
+\[
+    \lim\limits_{\Delta x \to +0} \dfrac{f(\Delta x)}{\Delta x} = 1; \hspace*{0.5cm} \lim\limits_{\Delta x \to -0} \dfrac{f(\Delta x)}{\Delta x} = -1.
+\]
+\begin{theorema}{(Arythmetic operations with derivatives)}{}
+    If $\exists f'(x_0)$ and $g'(x_0)$, then $\exists$ at the point $x_0:$ $f\pm g, \ f\cdot g$ and $\dfrac{1}{g}$ with additional condition $g(x_0) \neq 0$, such that:
+    \[
+        \begin{array}{c}
+            (f\pm g)'(x_0) = f'(x_0) + g'(x_0);\\[0.25cm]
+            (f\cdot g)' (x_0) = f'(x_0)\cdot g(x_0) + f(x_0)\cdot g'(x_0)\\[0.25cm]
+            \left(\dfrac{f}{g}\right)'(x_0) = \dfrac{f'(x_0)g(x_0) - f(x_0)g'(x_0)}{g^2(x_0)}
+        \end{array}    
+    \]
+\end{theorema}
+
+\begin{theorema}{(Basic derivatives)}{}
+    \[
+        \begin{array}{c}
+            \begin{array}{ll}
+            (\sin x)' = \cos x &(\sinh x)' = \cosh x\\ 
+            (\cos x)' = -\sin x &(\cosh x)' = \sinh x
+        \end{array}\\[0.5cm]
+        (\tan x)' = \dfrac{1}{\cos^2 x} = \sec^2x \\[0.25cm]
+        (\tan x)' = \dfrac{1}{\cos^2 x} = \sec^2x \\[0.25cm]
+        (\tanh x)' = \dfrac{1}{\cosh^2 x} \\[0.25cm]
+        (\cot x)' = -\dfrac{1}{\sin^2x} = -\csc^2x \\[0.25cm]
+        (\coth x)' = -\dfrac{1}{\sinh^2 x}\\[0.5cm]
+
+        \begin{array}{cc}
+            (x^a)' = ax^{a-1} & (a^x)' = a^x\ln a
+        \end{array}
+    \end{array}
+    \]
+\end{theorema}
+
+\begin{theorema}{(Some n-th derivatives)}{}
+    \[\arraycolsep=1.4pt\def\arraystretch{1.7}
+    \begin{array}{l}
+        (a^x)^{(n)} = a^x \ln^n a\\
+        (\sin x)^{(n)} = \sin(x+\dfrac{\pi n}{2})\\
+        (\cos x)^{(n)} = \cos(x+\dfrac{\pi n}{2})\\
+        (x^a)^{(n)} = a\cdot (a-1)\ldots (a-n+1)\cdot x^{a-n},\ \\
+        \hspace*{2.5cm} (a\notin \mathbb N) \vee (a\in\mathbb N, \ a \geq n)\\
+        (\ln(1+x))^{(n)} = (-1)^{n+1}(n-1)!(1+x)^{-1}.
+\end{array}
+\]
+\end{theorema}
+
+\begin{note}{}{}
+    Chain rule:
+    \useshortskip
+    \[
+        \left(f\left(g(x)\right)\right)' = f'\left(g(x)\right)g'(x)  
+    \]
+    \par 
+    In the below, $u = f(x)$ is a function of $x$. These rules are all generalizations of the above rules using the chain rule:
+    \begin{enumerate}
+        \item $\dfrac{d}{dx}\left(u^n\right) = nu^{n-1}\dfrac{du}{dx}$;
+        \item $\dfrac{d}{dx}\left(a^u\right) = a^u \ln(a) \dfrac{du}{dx}$;
+        \item $\dfrac{d}{dx}\left(e^u\right) = e^u \dfrac{du}{dx}$;
+        \item $\dfrac{d}{dx}\left(\log_a(u)\right) = \dfrac{1}{x\ln(u)}\dfrac{du}{dx}$;
+        \item $\dfrac{d}{dx}\left(\ln (u)\right) = \dfrac{1}{u}\dfrac{du}{dx}$;
+        \item $\dfrac{d}{dx}\left(\sin(u)\right) = \cos(u) \dfrac{du}{dx}$;
+        \item $\dfrac{d}{dx} \left(\cos(u)\right) = -\sin\dfrac{du}{dx}$;
+        \item $\dfrac{d}{dx} \left(\tan(u)\right) = \sec^2(u)\dfrac{du}{dx}$;
+        \item $\dfrac{d}{dx}\left(\tan^{-1}(u)\right) = \dfrac{1}{1+u^2} \dfrac{du}{dx}$
+    \end{enumerate}
+\end{note}
+
+\subsubsection*{Implicit differentiation}
+\par 
+Use whenever you need to take the derivative of a function that is implicity defined. Steps for solving:
+\begin{enumerate}
+    \item Differentiate both sides of the equation with respect to $x$;
+    \item When taking the derivative of any term that has a $y$ in it multiply the term by $y'$;
+    \item Solve for $y'$.
+\end{enumerate}
+When finding the second derivative $y''$, remember to replace any $y'$ terms in your final answer with the equation for $y'$ you already found. In other words, your final answer should not have any $y'$ terms in it.
+
+\subsubsection*{Log differentiation}
+\par 
+Two cases when this method is used:
+\begin{itemize}
+    \item Use whenever you can take advantage of log laws to make a hard problem easier:
+    \begin{itemize}
+        \item[-] Examples: $\dfrac{\left(x^3 + x\right)\cos x}{x^2 + 1}$ or \\[0.25cm] $\ln \left(x^2 + 1\right)\cos (x) \tan^{-1}(x)$, etc.
+        \item[-] Note that in the above examples, log differentiation is not required but makes taking the derivative easier. 
+    \end{itemize}
+    \item Use whenever you are to differentiate:
+    \[
+        \dfrac{d}{dx} \left(f(x)^{g(x)}\right)  
+    \]
+    There is no other way to take such derivatives.
+\end{itemize}
+\par 
+Steps:
+\begin{enumerate}
+    \item Take the $ln$ of both sides;
+    \item Simplify the problem using log laws;
+    \item Take the derivative of both sides;
+    \item Solve for $y'$.
+\end{enumerate}

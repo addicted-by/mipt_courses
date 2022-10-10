@@ -1,0 +1,91 @@
+\section{Expectation and variance}
+
+\subsection*{Expectation}
+\par 
+The mean, expected value or expectation of a random variable $X$ is written as $\E(X)$ or $\mu_x$. If we observe $N$ random variables of $X$, then the mean of the $N$ values will be approximately equal to $\E(X)$ for large $N$. The expectation is defined differently for continuous and discrete random variables.
+
+\begin{definition}{(Expectation for continuous r.v.-s)}{}
+    Let $X$ be a continuous random variable with p.d.f. $f_X$. The expected value of $X$ is:
+    \[
+        \E (X) = \int\limits_{-\infty}^{\infty} xf_X(x) dx . 
+    \]
+\end{definition}
+
+\begin{definition}{(Expectation for discrete r.v.-s)}{}
+    Let $X$ be a discrete random variable with probability mass function $f_X(x)$. The expected value of $X$ is:
+    \[
+        \E(X) = \sum\limits_{i=1}^\infty x_if_X(x_i) 
+    \]
+\end{definition}
+Properties of expectation
+\begin{theorema}{(Properties of Expectation)}{}
+    \begin{itemize}
+        \item For any r.v. $X$ and $\forall a, b \in \R$:
+        \useshortskip
+        \[
+            \E[aX + b] = a\E X + b;
+        \]
+        \item Let $X$ and $Y$ be any random variables. Then:
+        \[
+            \E[X+Y] = \E X + \E Y            
+        \]
+        \item Let $X$ and $Y$ be independent random variables. Then:
+        \[
+            \E[XY] = \E X \E Y.  
+        \]
+    \end{itemize}
+\end{theorema}
+
+\begin{note}{}{}
+    (for last property) The converse is not generally true.
+\end{note}
+
+\subsection*{Probability as an expectation}
+\par 
+Let $A$ be any event. We can write $P(A)$ as an expectation, as follows. Define the indicator function 
+\[
+    I_A = \left\{
+        \begin{array}{ll}
+            1, & \text{ if event } A \text{ occurs} \\
+            0, & \text{ otherwise.}
+        \end{array}
+     \right.  
+\]
+\par 
+Then $I_A$ is a random variable, and 
+\[
+    \begin{array}{c}
+        \E I_A = \sum\limits_{r=0}^1 rP(I_A = r) = 0 \cdot P(I_A=0) + 1 \cdot P(I_A = 1) = \\ = P(I_A = 1) = P(A).        
+    \end{array}
+\]
+\par 
+Thus for any event $A$:
+\[
+        P(A) = \E I_A
+\]
+\subsection*{Variance}
+\par 
+The variance of a random variable $X$ is a measure of how spread out it is. The variance measures how far the values of $X$ are from their mean, on average.
+\begin{definition}{}{}
+    Let $X$ be any random variable. The variance of $X$ is:
+    \[
+        \var (X) = \E\left((X-\mu_X)^2\right) = \E X^2 - \left(\E X\right)^2.  
+    \]
+\end{definition}
+ 
+\begin{theorema}{(Properties of variance)}{}
+    \begin{itemize}
+        \item For any r.v. $X$ and $\forall a, b \in \R$:
+        \[
+            \var \left(a X + b\right) = a^2 \var X.  
+        \]
+        \item Let $X$ and $Y$ be independent random variables. Then:
+        \[
+            \var (X+Y) = \var X + \var Y  
+        \]
+        \item If $X$ and $Y$ are not independent, then:
+        \[
+            \var (X+Y) = \var X + \var Y + 2\cov (X,Y)  
+        \]
+    \end{itemize}
+\end{theorema}

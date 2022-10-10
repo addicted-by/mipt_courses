@@ -1,0 +1,43 @@
+\section{Conditional probability. Conditional independence}
+\begin{definition}{(Conditional probability)}{}
+    If $A$ and $B$ are events with $P(B) > 0$, then the conditional probability of $A$ given $B$:
+    \[
+        P(A| B) = \dfrac{P(A \cap B)}{P(B)},  
+    \]
+    where $P(A)$ -- prior probability of $A$, $P(A|B)$ -- posterior probability of $A$.
+\end{definition}
+\begin{note}{}{}
+    (Posterior is equivalent to updated based on evidence, prior -- before this update)
+    \par 
+    For any event $A$, $P(A|A) = \dfrac{P(A \cap A)}{P(A)} = 1$ -- if $A$ occurred, our updated probability for $A$ is $1$.
+\end{note}
+\begin{theorema}{(Probability of intersection)}{}
+    For any two events $A$ and $B$ with positive probabilities:
+    \[
+        P(A\cap B) = P(B)P(A | B) = P(A) P(B|A).    
+    \]
+\end{theorema}
+\par 
+Applying this repeatedly, we get:
+\begin{theorema}{(Probability of intersection of $n$ events)}{}
+    For any events $A_1, \ldots, A_n$ with $P(A_1, A_2, \ldots, A_{n-1}) > 0$:
+    \[
+        \begin{array}{c}
+            P(A_1, A_2, \ldots, A_n) = \\ = P(A_1)P(A_2|A_1) P(A_3 | A_1,A_2)\cdot \ldots \\ \ldots \cdot P(A_n| A_1, \ldots, A_{n-1}),              
+        \end{array}
+    \]
+    where $, \equiv \cap$, e.g. $P(A_3 | A_1, A_2) \equiv P(A_3, | A_1 \cap A_2)$
+\end{theorema}
+
+ 
+
+\begin{definition}{(Conditional independence)}{}
+    Events $A$ and $B$ are conditionally independent given $E$ if 
+    \[
+        P(A \cap B| E) = P(A|E)P(B|E).  
+    \]
+\end{definition}
+
+\begin{note}{}{}
+    Conditional independence does not imply independence, nor does independence imply conditional independence.
+\end{note}

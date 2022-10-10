@@ -1,0 +1,366 @@
+\usepackage{amsmath, amsthm}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+% \usepackage{dsfont}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[labelsep=endash]{caption}
+% \usepackage{mathtools}
+\usepackage{graphicx, marvosym}
+\usepackage{euler}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage[many]{tcolorbox}
+\usepackage{tikz}
+\usepackage{nccmath}
+\usepackage{varwidth}
+% \usepackage{nccmath}
+\usepackage[fontsize=12pt]{fontsize}
+\defaultfontfeatures{Scale=MatchLowercase}
+% \setmainfont{Montserrat SemiBold}
+\setmainfont{FUTURA ROUND DEMI.TTF}
+% \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+% \usepackage{mathrsfs}
+\usepackage{multicol}
+\setlength{\columnseprule}{0pt}
+\setlength{\columnsep}{20.0pt}
+\usepackage{geometry}
+
+\geometry{
+  a4paper,% redundant if already in \documentclass
+  left=10mm,
+  right=10mm,
+  top=20mm,
+  bottom=25mm,
+  heightrounded,% better use it
+}
+
+\DeclareRobustCommand{\triangle}{%
+  \begingroup
+  \setlength{\unitlength}{1ex}%
+  \begin{picture}(1,1)
+  \polyline(1,0)(0,0)(.5,1)(1,0)(.5,0)
+  \end{picture}%
+  \endgroup
+}
+\definecolor{chaptercolor1}{RGB}{5, 0, 100}
+\definecolor{chaptercolor2}{RGB}{0, 0, 100}
+\newcommand{\trbr}[1]{
+	\left\langle#1\right\rangle
+}
+\newcommand{\pd}[2] {
+	\frac{\vdelta #1}{\vdelta #2}
+}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern3mu{#1#2}}}
+
+\usepackage[explicit]{titlesec}
+
+\newcommand*\sectionlabel{}
+\titleformat{\section}
+  {\gdef\sectionlabel{}
+   \normalfont\Large\bfseries\scshape}
+  {\gdef\sectionlabel{\thesection\ }}{0pt}
+  {
+\noindent
+% \setstretch{1}
+\begin{tikzpicture}
+\node[rectangle,rounded corners=3pt,inner sep=4pt,fill=chaptercolor2,text width=0.98\columnwidth] {\color{white}\begin{spacing}{0.3}\sectionlabel#1\end{spacing}};
+\end{tikzpicture}
+  }
+\titlespacing*{\section}{0pt}{5pt}{0pt}
+
+\renewcommand*\thesection{\arabic{section}.}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\eeqa}{\end{eqnarray}}
+\newcommand{\beqas}{\begin{eqnarray*}}
+\newcommand{\eeqas}{\end{eqnarray*}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vvu}{\vec{u}}
+\newcommand{\liml}{\lim\limits}
+\newcommand{\prodl}{\prod\limits}
+\newcommand{\suml}{\sum\limits}
+\newcommand{\range}[1]{\{1, \ldots, #1\}}
+\newcommand{\pr}{\operatorname{pr}}
+\newcommand{\grad}{\operatorname{grad}}
+\newcommand{\charr}{\operatorname{char}}
+\newcommand{\basisf}{f_1, \ldots, f_n}
+\newcommand{\hdash}{\rotatebox{90}{\dashline}}
+\newcommand{\basis}{\vec{e_1}, \ldots, \vec{e_n}}
+\newcommand{\basisk}{\vec{e_1,}, \ldots, \vec{e_k}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+\newcommand{\bits}{\begin{itemize*}}
+\newcommand{\eits}{\end{itemize*}}
+\newenvironment{enumerate*}{\begin{enumerate}
+    \setlength{\topsep}{0ex}
+    \setlength{\parskip}{0ex}
+    \setlength{\partopsep}{-4ex}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parsep}{0ex}}
+{\end{enumerate}}
+\let\bs\backslash
+\let\lra\Leftrightarrow
+\let\ra\rightarrow
+\let\rra\rightrightarrows
+\let\Ra\Rightarrow
+\let\La\Leftarrow
+\let\emb\hookrightarrow
+\let\tr\triangle
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+\renewcommand{\emptyset}{\ensuremath{\varnothing}}
+\newcommand{\benum}{\begin{enumerate*}}
+\newcommand{\eenum}{\end{enumerate*}}
+\newcommand{\E}{\mathbb{E}}
+%\newcommand{\benums}{\begin{enumerate*}}
+%\newcommand{\eenums}{\end{enumerate*}}
+\newcommand{\mybullet}{$\bullet$}
+% math mode commands
+
+\newcommand{\fracpartial}[2]{\frac{\partial #1}{\partial  #2}}
+\newcommand{\rrr}{{\mathbb R}}
+\newcommand{\bigOO}{{\cal O}}
+\newcommand{\dataset}{{\cal D}}
+\renewcommand{\tr}{\operatorname{tr}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\Lf}{\mathscr{L}}
+\newcommand{\Ex}{\textbf{Пример: }}
+\newcommand{\example}{\textbf{Example: }}
+\newcommand{\contr}{\overline{\mathbb R}}
+\newcommand{\bern}[1]{\operatorname{Bern}(#1)}
+\newcommand{\bin}[1]{\operatorname{Bin}(#1)}
+\newcommand{\poiss}{\operatorname{Poiss}}
+\newcommand{\geom}{\operatorname{Geom}}
+\newcommand{\hgeom}[1]{\operatorname{HGeom}(#1)}
+\newcommand{\dunif}[1]{\operatorname{DUnif}(#1)}
+\newcommand{\intl}{\int\limits}
+\newcommand{\cov}{\operatorname{cov}}
+\newcommand{\corr}{\operatorname{corr}}
+\newcommand{\prokol}{\overset{\circ}{U}_\delta(a)}
+\renewcommand{\ker}{\operatorname{Ker}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\sign}{\operatorname{sgn}}
+\newcommand{\onevector}{{\mathbf 1}}
+\newcommand{\bbone}[1]{{\mathbf 1}_{[#1]}}
+\newcommand{\vdelta}{\partial}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\indeg}{indeg}
+\DeclareMathOperator{\outdeg}{outdeg}
+\newcommand{\eps}{\varepsilon}
+\newcommand {\argmax}[2]{\mbox{\raisebox{-1.7ex}{$\stackrel{\textstyle{\rm #1}}{\scriptstyle #2}$}}\,}  % to replace with the amsmath construction
+\newcommand{\var}{\operatorname{var}}
+\newlength{\picwi}
+\newcommand{\backskip}{\hspace{-2.5em}} % how much to skip back for an empty item?
+
+
+
+\newtcbtheorem{definition}{Definition}{
+  theorem name, 
+  breakable,
+  lower separated=false,
+  colback=white!80!gray,
+  before skip=14pt plus 2pt,
+  after skip=10pt plus 2pt,
+colframe=white, fonttitle=\bfseries,
+colbacktitle=black,
+coltitle=white,
+enhanced,
+boxed title style={colframe=black},
+attach boxed title to top left={xshift=0.5cm,yshift=-2mm},
+}{def}
+
+\newtcbtheorem{theorema}{Theorem}{theorem name,breakable, enhanced,
+frame empty, interior empty,
+borderline={1mm}{0mm}{black},
+attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
+boxed title style={frame code={
+            \path[fill=black!30!black]
+              ([yshift=-1mm,xshift=-1mm]frame.north west)
+                arc[start angle=0,end angle=180,radius=1mm]
+              ([yshift=-1mm,xshift=1mm]frame.north east)
+                arc[start angle=180,end angle=0,radius=1mm];
+            \path[left color=gray!60!black,right color=gray!60!black,
+              middle color=gray!80!black]
+              ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+              [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+              -- (frame.south east) -- (frame.south west)
+              -- ([xshift=-1mm,yshift=-1mm]frame.north west)
+              [sharp corners]-- cycle;
+            },interior engine=empty,
+          },
+          fonttitle=\bfseries}{theo}
+
+
+\newtcbtheorem{lemma}{Lemma}%
+{theorem name, breakable, 
+enhanced,frame empty,interior empty,colframe=white, top=8mm,
+    coltitle=white,fonttitle=\bfseries,colbacktitle=black,
+    % borderline={0.5mm}{0mm}{black},
+    borderline={0.5mm}{0mm}{black,dashed},
+    attach boxed title to top left={yshift=-4mm},
+    boxed title style={sharp corners=east,boxrule=1pt},varwidth boxed title}{thm}
+
+
+
+\tcbset{%
+prop/.style={%
+theorem name,
+    enhanced,
+    breakable,
+    sharp corners,
+    toprule=0pt, rightrule=0pt, bottomrule=0pt, leftrule=1mm,
+    colback=#1!5, colframe=#1!80!black, coltitle=#1!80!black, 
+    detach title,
+    overlay unbroken and first ={
+        \node[rotate=90, minimum width=1cm, anchor=south, font=\bfseries] 
+            at (frame.west) {\tcbtitle};
+    }
+}
+}
+\newtcbtheorem{proposition}{Prop}
+{prop=black}{pr}
+
+\usetikzlibrary{calc}
+\usetikzlibrary{patterns}
+
+\newcommand{\titlepath}{
+  \fill[black]
+  (title.south east)
+  --(title.east)coordinate(A)
+  to[curve to,out=90,in=0]($(A)+(-5mm,5mm)$)
+      --($(title.north west)+(5mm,0mm)$)coordinate(B)
+to[curve to,out=180,in=90]($(B)+(-5mm,-5mm)$)coordinate(C)
+      --($(C)+(0mm,-5mm)$)
+      to[curve to,out=90,in=180]($(title.south west)+(+5mm,0mm)$)coordinate(F)
+      --cycle;
+      \draw[black,ultra thick]
+      ([yshift=.5\pgflinewidth]title.south east)--
+      ([yshift=.5\pgflinewidth]title.south-|interior.east);
+    }
+
+\newtcolorbox{note}{
+  enhanced,
+  frame empty,
+  title=Note,
+  colback=white,
+  coltitle=white,
+  before skip=14pt plus 2pt,
+  after skip=10pt plus 2pt,
+  borderline south={0.5mm}{0mm}{black,dash pattern=on 0.1pt off 4pt,line
+  width=2pt,line cap=round},
+  attach boxed title to top left={xshift=-5mm},
+  boxed title style={empty},
+  underlay boxed title=\titlepath
+
+}
+
+\makeatletter
+\newenvironment{problem}{\@startsection
+       {subsection}
+       {1}
+       {-.2em}
+       {-3.5ex plus -1ex minus -.2ex}
+       {2.3ex plus .2ex}
+       {\pagebreak[3]%forces pagebreak when space is small; use \eject for better results
+       \large\bf\noindent{Задача }
+       }
+       }
+\makeatother
+
+\newenvironment{solution}{\paragraph{\underline{Решение}:}}{\hfill$\blacksquare$}
+\newcommand{\cons}{\underline{Corollary: }}
+
+
+\usepackage{stackengine}
+\newcommand\xrowht[2][0]{\addstackgap[.5\dimexpr#2\relax]{\vphantom{#1}}}
+
+\usepackage[titles]{tocloft}
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+  \newcommand{\Vast}{\bBigg@{4}}
+\makeatother
+
+\AtBeginDocument{\renewcommand\contentsname{\centering \Huge Table of Contents}}
+
+
+\boldmath
+\pagestyle{fancy}
+\fancyhead[R]{Lecture \thesection}
+\fancyhead[C]{Methods of applied statistics}
+\fancyhead[L]{}
+\fancyfoot[L]{2022}
+\fancyfoot[R]{v1.0}
+\fancyfoot[C]{--\thepage--}
+
+\tikzset{
+pattern size/.store in=\mcSize, 
+pattern size = 5pt,
+pattern thickness/.store in=\mcThickness, 
+pattern thickness = 0.3pt,
+pattern radius/.store in=\mcRadius, 
+pattern radius = 1pt}
+\makeatletter
+\pgfutil@ifundefined{pgf@pattern@name@_xen0kut1n lines}{
+\pgfdeclarepatternformonly[\mcThickness,\mcSize]{_xen0kut1n}
+{\pgfqpoint{0pt}{0pt}}
+{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+{\pgfpoint{\mcSize}{\mcSize}}
+{\pgfsetcolor{\tikz@pattern@color}
+\pgfsetlinewidth{\mcThickness}
+\pgfpathmoveto{\pgfpointorigin}
+\pgfpathlineto{\pgfpoint{\mcSize}{0}}
+\pgfusepath{stroke}}}
+\makeatother
+
+% Pattern Info
+ 
+\tikzset{
+pattern size/.store in=\mcSize, 
+pattern size = 5pt,
+pattern thickness/.store in=\mcThickness, 
+pattern thickness = 0.3pt,
+pattern radius/.store in=\mcRadius, 
+pattern radius = 1pt}
+\makeatletter
+\pgfutil@ifundefined{pgf@pattern@name@_vilei2kdf}{
+\pgfdeclarepatternformonly[\mcThickness,\mcSize]{_vilei2kdf}
+{\pgfqpoint{0pt}{0pt}}
+{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+{\pgfpoint{\mcSize}{\mcSize}}
+{
+\pgfsetcolor{\tikz@pattern@color}
+\pgfsetlinewidth{\mcThickness}
+\pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+\pgfpathlineto{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+\pgfusepath{stroke}
+}}
+\makeatother
