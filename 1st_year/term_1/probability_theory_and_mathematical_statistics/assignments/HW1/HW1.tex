@@ -1,0 +1,343 @@
+\documentclass[12pt]{report}
+\usepackage{../mystyle}
+\begin{document}
+\boldmath
+\pagestyle{fancy}
+
+\chapter{Probability Home Assignment. \\[-1cm] \hspace*{3.5cm} \large Work has been done by: Ryabykin Aleksey\vskip3.2ex}
+\fancyhead[L]{Homework 1.}
+\fancyhead[C]{MIPT Probability. Fall 2022}
+\fancyhead[R]{Ryabykin Aleksey}
+% \setcounter{subsection}{2}
+\begin{problem}{Prove that}
+    \[
+        \sum\limits_{j=0}^k \binom{n}{j}\ \binom{m}{k-j} = \binom{m+n}{k}. 
+    \]
+\end{problem}
+By that, we are proving that a sum of two binomial random variables $X \sim \bin(n , p)$ and $Y \sim \bin(m, p)$ with the same success probability $p$, is also a binomial random variable $X + Y \sim \bin(n+m, p).$
+\begin{proof}
+    I will prove this statement in an algebraic way. Let me use the binomial theorem:
+    \begin{theorema}{(A simple variant of a binomial theorem)}{}
+        \[
+            (1 + x)^n = \binom{n}{0}x^0 + \binom{n}{1}x^1 + \ldots + \binom{n}{n-1}x^{n-1} + \binom{n}{n}x^n,  
+        \]
+        or equivalently,
+        \[
+            (1+x)^n = \sum\limits_{k=0}^n \binom{n}{k}\  x^k 
+        \]
+    \end{theorema}
+    We can rewrite the right and left parts of the identity in terms of binomial theorem:
+    \[
+        \begin{array}{c}
+            \displaystyle \underbrace{(1+x)^n}_{\displaystyle\sum\limits_{j=0}^n \binom{n}{j}x^j} \cdot \underbrace{(1+x)^m}_{\displaystyle \sum\limits_{p=0}^m \binom{m}{p} x^p} = \sum\limits_{k=0}^{m+n} \binom{m+n}{k} x^k \\
+            \displaystyle \sum\limits_{j=0}^n\sum\limits_{p=0}^m \binom{n}{j} \binom{m}{p} x^{j+p}. \hspace*{0.25cm} \text{Let } k = j+p, \text{ then } p = k - j.\\
+        \end{array}  
+    \]
+    Making this changes in variables we can obtain:
+    \[
+        \begin{array}{c}
+            \displaystyle \sum\limits_{j=0}^n\sum\limits_{k = j}^{j+m} \binom{n}{j} \binom{m}{k-j} x^k           
+        \end{array}
+    \]
+    Since $j \leq n$ we can split the sums:
+    \[
+        \sum\limits_{j=0}^n \sum\limits_{k=j}^{n+m} \binom{n}{j} \binom{m}{k - j} x^k - \xcancel{\sum\limits_{j=0}^n \sum\limits_{k = j + m + 1}^{n+m} \binom{n}{j} \binom{m}{k - j} x^k}
+    \]
+    We can reduce the last one term because of the next thoughts. We know, that $k > j+m$ (easily get it from the limits), so the binomial coefficient $\displaystyle \binom{n}{r-k}$ will be equal to zero. Similarly, 
+    \[
+        \sum\limits_{j=0}^n \sum\limits_{k=0}^{n+m} \binom{n}{j} \binom{m}{k - j} x^k - \xcancel{\sum\limits_{j=0}^n \sum\limits_{k=0}^{k-1} \binom{n}{j} \binom{m}{k - j} x^k}
+    \]
+    Reducing is legal because of $k < j$, then binomial coefficient $\displaystyle \binom{m}{k-j}$ is equal to $0$. So, we can change sum operators:
+    \[
+        \sum\limits_{k=0}^{n+m}\sum\limits_{j=0}^n \binom{n}{j} \binom{m}{k-j} x^k  
+    \]
+    In case of $k \geq n$ we are getting:
+    \[
+        \sum\limits_{k=0}^{n+m}\sum\limits_{j=0}^{k} \binom{n}{j} \binom{m}{k-j} x^k - \xcancel{\sum\limits_{k=0}^{n+m}\sum\limits_{j = n+1}^k \binom{n}{j} \binom{m}{k-j} x^k}
+    \]
+    Reduced because of $j > n$. Otherwise, if $k < n$:
+    \[
+        \sum\limits_{k=0}^{n+m} \sum\limits_{j=0}^k \binom{n}{j}\binom{m}{k-j} x^k + \xcancel{\sum\limits_{k=0}^{n+m} \sum\limits_{j = k+1}^n \binom{n}{j}\binom{m}{k-j} x^k}  
+    \]
+    Legally simplifying since $j > k$. Either the 1st case or the 2nd leads us to the:
+    \[
+        \sum\limits_{k=0}^{n+m} \sum\limits_{j=0}^k \binom{n}{j}\binom{m}{k-j} x^k  
+    \]
+    on the left And
+    \[
+        \sum\limits_{k=0}^{m+n} \binom{m+n}{k} x^k
+    \]
+    Comparing the coefficient of $x^k$, we can finally obtain:
+    \[
+        \sum\limits_{j=0}^k \binom{n}{j}\ \binom{m}{k-j} = \binom{m+n}{k}. 
+    \]
+\end{proof}
+
+\begin{problem}{}
+    A basket contains $n$ balls, out of which $w$ are white and $b$ are black ($w + b  = n$). We extract $m$ balls from this basket with replacement and note their colors. Find the probability that out of these $m$ balls exactly $k$ were white. 
+\end{problem}
+
+\begin{solution}
+    Suppose $A$ is an event defined as from $m$ balls have been chosen exactly $k$ white ones. We can obtain the needed probability $P(A)$ by the following formula:
+    \[
+        P(A) = C_m^k \dfrac{w^k \cdot b^{m-k}}{n^m},  
+    \]
+    where $n^m$ means all possible variations, $w^k\cdot b^{m-k}$ mean $k$ white balls has been extracted with the rest $m-k$ black balls. And $C_m^k$ is a number of combinations, which can be extracted $m$ balls from $n$ ones. 
+\end{solution}
+
+\begin{problem}{}
+    A fair dice is rolled $n$ times. What is the probability that at least $1$ of the $6$ values never appears?
+\end{problem}
+
+\begin{solution}
+    Using inclusion/exclusion formula the probability would be:
+    \[
+        P =  \binom{6}{1}\left(\dfrac{5}{6}\right)^n - \binom{6}{2}\left(\dfrac{4}{6}\right)n + \binom{6}{3}\left(\dfrac{3}{6}\right)^n - \binom{6}{4}\left(\dfrac{2}{6}\right)^n + \binom{6}{5}\left(\dfrac{1}{6}\right)^n 
+    \]
+\end{solution}
+
+\begin{problem}{}
+    There $(m+1)$ baskets and each basket has exactly $m$ balls in it. Additionally for each $n = 0, 1,\ldots, m$, we know that $n$-th basket contains exactly $n$ white and $(m-n)$ black balls. We pick a basket at random and pick $k$ balls from it with replacement. Find the probability that $(k+1)$-th ball will be white if all $k$ balls were white.
+\end{problem}
+
+\begin{solution}
+    The core idea is that probability of extracting a white ball at any timestamp is the same because of with replacement case. That is why, for example, for basket $i$:
+    \[
+        P_{k+1} = \dfrac{n}{m},  
+    \]
+    where $n$ is a number of white balls in the basket $i$, $m$ -- all balls in the basket. Now we can use the law of total probability, it will be equal to:
+    \[
+        P = \sum\limits_{n=1}^{m} P(B_i)P(\text{white at $k+1$ | $k$ balls were white}) = \sum\limits_{n=1}^{m} \dfrac{1}{m+1} \dfrac{n}{m}. 
+    \] 
+    Iterating through baskets with just counting the choosing this basket and a probability to choose a white ball on $k+1$st step with chosen $k$ whites.
+\end{solution}
+
+\begin{problem}{}
+    Let $X_1,\ X_2 \overset{i.i.d.}{\sim} U(0, 1)$. Find the pdf of $Z = X_1 \cdot X_2$.
+\end{problem}
+
+\begin{solution}
+    We can find the distribution function:
+    \[
+        P(Z \leq z) = \int\limits_0^1 P(xY \leq z)f_X(x)dx = \int\limits_0^1 P\left(Y \leq \dfrac{z}{x}\right)f_X(x)dx.  
+    \]
+    Splitting the integral:
+    \[
+        \begin{array}{c}            
+        \displaystyle P(Z \leq z) = \int\limits_0^z f_X(x)dx + \int \limits_z^1 P\left(Y \leq \dfrac{z}{x}\right)f_X(x) dx = \\
+        \displaystyle = \int\limits_0^z dx + \int\limits_z^1 \dfrac{z}{x}dx = z - 0 + 0 - z\log z = z - z\log z = F_Z(z)  
+    \end{array}
+    \]
+    Hence the pdf of $Z$,
+    \[
+        f_Z(z) = \dfrac{d}{dz}F_Z(z) = 1 - \left(\log z + \dfrac{z}{z}\right) = -\log z.
+    \]  
+\end{solution}
+
+\begin{problem}{}
+    If someone gets a positive result on a COVID test that only gives a false positive with probability $0.001$, what is the chance that he or she actually got COVID, if:
+    \begin{enumerate}
+        \item The probability that a person has COVID is $0.01$;
+        \item The probablity that a person has COVID is $0.0001$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item Let me define some notations. Let define $P(\text{COVID})$ as the probability that a person has COVID, $P(\text{HEALTHY})$ as the probability that a person does not have a COVID, $P(\text{POS}), P(\text{NEG})$ as probabilites of positive and negative tests results respectively. Then to obtain the probability of actually be COVID illed when a patient got positive result we can imply Bayes' theorem:
+    \[
+        P(\text{COVID }| \text{ POS}) = \dfrac{P(\text{POS }| \text{ COVID}) P(\text{COVID})}{P(\text{POS})}. 
+    \] 
+    We already know $P(\text{POS }| \text{ COVID}) = 1$, $P(\text{COVID}) = 0.01$. The only thing we need is the probability of positive result, that can be found by the law of total probability:
+    \[
+        \begin{array}{c}
+            P(\text{POS}) = P(\text{POSITIVE }| \text{ COVID}) P(\text{COVID}) + P(\text{POSITIVE } | \text{ HEALTHY}) P(\text{HEALTHY}) = \\ = 1 \cdot 0.01 + 0.001 \cdot 0.99 = 0.01099              
+        \end{array}
+    \] 
+    So, the final probability for the first case:
+    \[
+        P(\text{COVID }| \text{ POS}) = 0.91.
+    \]
+    \item Similarly, lets apply the same formulas:
+    \[
+        \begin{array}{c}
+            P(\text{POS}) = P(\text{POSITIVE }| \text{ COVID}) P(\text{COVID}) + P(\text{POSITIVE } | \text{ HEALTHY}) P(\text{HEALTHY}) = \\ = 1 \cdot 0.0001 + 0.001 \cdot 0.99 = 0.00109              
+        \end{array}
+    \] 
+    And, finally
+    \[
+        P(\text{COVID }| \text{ POS})  = \dfrac{1\cdot 0.0001}{0.00109} = 0.0917.
+    \]
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}{}
+    Let $X$ be normally distributed $X \sim \mathcal{N}\left(\mu, \sigma^2\right)$, so $f_X(x) = \dfrac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\dfrac{\left(x - \mu\right)^2}{2\sigma^2}\right)$. Find the PDF of $Y = X^2$.
+\end{problem}
+
+\begin{solution}
+    We can obtain the distribution function by the followng steps:
+    \[
+        F_Y(y) = P(Y \leq y) = P\left(X^2 \leq y\right) = P\left(|X| \leq \sqrt{y}\right) = P\left(- \sqrt{y} \leq X \leq \sqrt{y}\right) 
+    \]
+    That can be easily rewritten in the form:
+    \[
+        F_Y(y) = F_X(\sqrt{y}) - F_X(-\sqrt{y}).
+    \]
+    To finally obtain the probability density function we can differentiate the last expression:
+    \[
+        f_Y(y) = \dfrac{1}{2\sqrt{y}} f_X(\sqrt{y}) + \dfrac{1}{2\sqrt{y}} f_X(-\sqrt{y}) 
+    \]
+    Keeping in mind evenness of Gaussian function, we can just simplify:
+    \[
+        f_Y(y) = \dfrac{1}{\sqrt{y}} f_X(\sqrt{y}) = \dfrac{1}{\sqrt{y2\pi\sigma^2}} \exp(-\dfrac{\left(\sqrt{y} - \mu\right)^2}{2\sigma^2}).
+    \]
+\end{solution}
+
+\begin{problem}{}
+    Find $\E\left(|X-Y|\right)$ for $X, Y \overset{i.i.d.}{\sim} \mathcal{N}(0,1)$.
+\end{problem}
+
+\begin{solution}
+    We know, that any linear combination of normally distributed random variables also have a normal distribution. We can express expectation and standard deviation of the non-absolute value of given difference just by knowledge of this fact:
+    \[
+        \begin{array}{c}
+            \displaystyle W = X - Y \sim \mathcal{N}(0, 2)\\
+            \displaystyle \mu_W = 0 - 0 = 0\\
+            \displaystyle \sigma^2_W = \sigma^2_X + (-1)^2 \sigma^2_Y = 1 + 1 = 2.
+        \end{array}  
+    \]
+    Now let's find the expectation of an absolute value:
+    \[
+        \begin{array}{c} 
+            \displaystyle \E |W| = \int\limits_{-\infty}^\infty |w| \dfrac{1}{\sqrt{2\pi\cdot 2}} \exp(-\dfrac{\left(w - 0\right)^2}{2\cdot 2}) \\ 
+            \displaystyle 
+            \E |W| = \int\limits_{-\infty}^\infty |w| \dfrac{1}{\sqrt{4\pi}} \exp(-\dfrac{w^2}{4}) = - \dfrac{1}{\sqrt{\pi}} \cdot \int \limits_{-\infty}^0 \dfrac{w}{2} \exp(-\dfrac{w^2}{4}) + \dfrac{1}{\sqrt{\pi}} \int\limits_{0}^\infty \dfrac{w}{2}\exp(-\dfrac{w^2}{4}) = \\[1cm]
+            \displaystyle = \begin{vmatrix}
+                \text{Let } u = \dfrac{w^2}{4} \\[0.5cm]
+                du = \dfrac{w}{2} 
+            \end{vmatrix} = \\[1cm]
+            = \dfrac{1}{\sqrt{\pi}} e^{-u} \bigg|^0_{-\infty} - \dfrac{1}{\sqrt{\pi}} e^{-u} \bigg|^\infty_0 = \dfrac{1}{\sqrt{\pi}} + \dfrac{1}{\sqrt{\pi}} = \dfrac{2}{\sqrt{\pi}}.
+        \end{array}
+    \]
+\end{solution}
+
+\begin{problem}{}
+    We found that the sum of $X_1, X_2 \overset{i.i.d.}{\sim} U(0, b), X_1+X_2$ has a ``triangular'' PDF.
+    \begin{enumerate}
+        \item Find the PDF of $Y = X_1 + X_2 + X_3$ for $X_1, X_2, X_3 \overset{i.i.d.}{\sim} U(0, b)$, where, for now, $b = 1$.
+        \item Find $\E Y$ and $\var Y$. What happens to them if $b$ is set to something $\neq 1$ (but still $b > 0$ for simplicity).
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    1. As it has been said before, we've found that the sum of two uniform distributed random variables has a ``triangular'' PDF of a kind:
+    \[
+        \begin{array}{c}
+            f_T(t) = \left\{
+                \begin{array}{cc}
+                    t, & 0 < t < 1,\\
+                    2-t, & 1 < t < 2,
+                \end{array}
+             \right.
+        \end{array}    
+    \]
+    where $T = X_1 + X_2$. So that is why our goal is to find a new sum $S$ equal to $S = T + X_3$, where $T$ is distributed with pdf $f_T(t)$ and $X_3$ has a uniform distribution. The core idea is to implement convolution again to obtain the answer.
+    \[
+        f_S(s) = \int\limits_{-\infty}^{+\infty} f_{T}(s - t)f_S(t) dt.
+    \]
+    So, 
+    \[
+        f_S(s) = \left\{
+            \begin{array}{cc}
+                \displaystyle\int\limits_0^s t dt = \dfrac{s^2}{2}, & 0 < s < 1,\\
+                \displaystyle\int\limits_{s-1}^s (2-t)dt = -s^2 + 3s - \dfrac{ 3}{2}, & 1 < s < 2,\\
+                \displaystyle \int\limits_{s-1}^2 (2-t)dt = \dfrac{(s - 3)^2}{2}, & 2 < s < 3.
+            \end{array}
+         \right.  
+    \]
+    2. Keeping in mind the linearity of expectation:
+    \[
+        \E Y = \E X_1 + \E X_2 + \E X_3 = 3\cdot \dfrac{1}{2}.
+    \]
+    Suppose $b$ is an arbitrary variable:
+    \[
+        \E Y = \dfrac{3b}{2}.
+    \]
+    Because of independence of random variables $X_n\ n\in \{1,2,3\}$, then:
+    \[
+        \var Y = \sum\limits_{i=1}^3\var X_i = \dfrac{3}{12}
+    \]
+    In case when $b$ has an arbitrary value:
+    \[
+        \var Y = \sum\limits_{i=1}^3\var X_i = \dfrac{3b^2}{12}
+    \]
+\end{solution}
+
+\begin{problem}{}
+    Work out that, for $X, Y \overset{i.i.d.}{\sim} \mathcal{N}(0, \sigma^2)$, the magnitude $R = \sqrt{X^2 + Y^2}$ of a random vector $(X,Y)$ is Rayleigh-distributed, $R \sim \text{Rayleigh}(\sigma)$:
+    \[
+        f_R(r | \sigma) = \dfrac{r}{\sigma^2} \exp \left(-\dfrac{r^2}{2\sigma^2}\right).
+    \] 
+\end{problem}
+
+\begin{solution}
+    We can standardize a normally distributed random variables. So, $\dfrac{X}{\sigma}, \dfrac{Y}{\sigma} \overset{i.i.d.}{\sim} \mathcal{N}(0, 1)$. Then the magnitude can be written in the following manner: 
+    \[
+        R = \sigma \sqrt{\dfrac{X^2}{\sigma^2} + \dfrac{Y^2}{\sigma^2}}.
+    \]
+     Keeping in mind, that chi-squared distribution with $k$ freedom degrees is a distribution of a sum of squares of $k$ independent identity distributed standard random variables, we can obtain, that $R = \sigma\sqrt{\chi^2(2)}$. Let's write the distribution function:
+     \[
+        P(R \leq r) = P\left(\sigma\sqrt{\chi^2(2)} \leq r\right) = P\left(\sqrt{\chi^2(2)} \leq \dfrac{r}{\sigma}\right) = P\left(\chi^2(2) \leq \dfrac{r^2}{\sigma^2}\right) = F_R(r)
+     \]
+     Hense, probability density function can be obtained by differentiation:
+     \[
+        f_R(r) = f_{\chi^2(2)} \left(\dfrac{r^2}{\sigma^2}\right) \cdot \dfrac{2r}{\sigma^2}.
+     \]
+     We know the probability density function of $\chi^2(2)$:
+     \[
+         f(x; k) = \dfrac{\displaystyle x^{\displaystyle\dfrac{k}{2} - 1}e^{-\dfrac{x}{2}}}{\displaystyle 2^{\dfrac{k}{2}}\Gamma\left(\dfrac{k}{2}\right)} = e^{-\dfrac{x}{2}} \cdot \dfrac{1}{2}. 
+     \]
+     Finally,
+     \[
+        f_R(r) = \dfrac{2r}{\sigma^2} \cdot \dfrac{1}{2} \cdot \exp(-\dfrac{r^2}{2\sigma^2}) = \dfrac{r}{\sigma^2} \exp(-\dfrac{r^2}{2\sigma^2}) = f_R(r | \sigma).
+     \]
+\end{solution}
+
+\begin{problem}{}
+    We will say that set $A \subset \N$ has asymptotic density $\theta $ if there exits the following limit:
+    \[
+        \lim\limits_{n \to \infty} \dfrac{|A \cap \left\{1, \ldots, n\right\}|}{n} = \theta.  
+    \]
+    Denote the family of such sets (which have asymptotic density) as $\mathcal{A}$. Is $\mathcal{A}$ a $\sigma$-algebra?
+\end{problem}
+
+\begin{solution}
+    Let me prove it by the definition of $\sigma$-algebra.
+    \begin{definition}{($\sigma$-algebra)}{}
+        Let $X$ be some set. Then a subset  $\sigma$ of the powerset of the set $X$ is called a $\sigma$-algebra if it satisfies the following properties:
+        \begin{enumerate}
+            \item Either $X$, or $\emptyset$ are contained in $\sigma$;
+            \item If $E \in \sigma$, then its complement is contained in $\sigma$: $X \backslash E \in \sigma$;
+            \item Union and intersection of countable subsets of $\sigma$ are contained in $\sigma$.
+        \end{enumerate}
+    \end{definition}
+    Let it prove step by step:
+    \begin{enumerate}
+        \item $\emptyset \in \mathcal{A}$:
+        \[
+            \lim\limits_{n \to \infty} \dfrac{|\emptyset \cap \{1, \ldots, n\}|}{n} = 0  
+        \]
+        Also $\N \in \mathcal{A}$:
+        \[
+            \lim\limits_{n\to \infty} \dfrac{|\N \cap \{1, \ldots, n\}|}{n} = 1.  
+        \]
+        \item Let $A \in \mathcal{A}$, then $\N \backslash A \in \mathcal{A}$:
+        \[
+            \dfrac{|\left(\N \backslash A\right) \cap \{1, \ldots, n\}|}{n}  \leq 1
+        \]
+        Following the Weierstrass theorem, this limit exists.
+        \item Similarly, for union and intersection of countable subsets of $\mathcal{A}$.
+    \end{enumerate}
+\end{solution}
+\end{document}
