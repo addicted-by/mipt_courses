@@ -1,0 +1,233 @@
+\documentclass[12pt]{report}
+\usepackage{../mystyle}
+\begin{document}
+\boldmath
+\pagestyle{fancy}
+\setcounter{chapter}{1}
+\chapter{Probability Home Assignment. \\[-1cm] \hspace*{3.5cm} \large Work has been done by: Ryabykin Aleksey\vskip3.2ex}
+\fancyhead[L]{Homework 2.}
+\fancyhead[C]{MIPT Probability. Fall 2022}
+\fancyhead[R]{Ryabykin Aleksey}
+% \setcounter{subsection}{2}
+\begin{problem}{(Poisson approximation to Binomial)} A group of $n$ people play ``Secret Santa''. They do it as follows: each puts their name on a slip of paper in a hat, then picks a name randomly from hat \emph{without replacement}, and then buys a gift for that person. Unfortunately, they overlook the possibility of drawing one's own name. Assume $n \geq 2$. Find the expected value of the number $X$ of people who pick their own names. What is the approximate distribution of $X$ if $n$ is large (specify distribution and parameter)?
+\end{problem}
+
+\begin{solution}
+    Let's define indicator random variable $I_j$ that indicates whether $j$-th person has picked his or her own name or not. It is quite clear that $\forall j \in \left\{1, \ldots, n\right\}\hspace*{0.2cm} P(I_j = 1) = \dfrac{1}{n} = \E I_j$. After that we can apply the knowledge of expectation linearity and obtain the desired expected value:
+    \[
+        \E \left[\sum\limits_j I_j\right] = \sum\limits_j \E I_j = \sum\limits_j P(I_j = 1) = n \cdot \dfrac{1}{n} = 1.
+    \]  
+    By the poisson paradigm, thus for very large $n$ we can approximate $x$ with $y \sim \poiss(\E x) = \poiss (1)$:
+    \[
+        P(x=0) = \dfrac{1^0}{0!} \cdot e^{-1} = \dfrac{1}{e}  
+    \]
+    which is the proability of a $\poiss(1)$ distribution.
+\end{solution}
+
+\begin{problem}{(Poisson process)}
+    Let $X_1, X_2, \ldots  \sim \bern (p)$ be a series of indepenent random variables. Let $N \sim \poiss (\lambda)$. Find the PMF of $Y = \sum\limits_{i=1}^N X_i$.
+\end{problem}
+
+\begin{solution}
+    We have:
+    \[
+        \begin{array}{c}
+            \displaystyle P(Y = k) = \sum\limits_{n=k}^\infty \dfrac{\lambda^n e^{-\lambda}}{n!} C_n^k p^k(1-p)^{n-k} = \lambda^k e^{-\lambda} \sum\limits_{n=k}^\infty  \dfrac{\lambda^{n-k}}{k!(n-k)!} p^k(1-p)^{n-k} = \\[0.5cm] 
+            \displaystyle = \lambda^k p^k e^{-\lambda} \dfrac{1}{k!} \sum\limits_{n=0}^\infty \dfrac{\lambda^n (1-p)^n}{n!}  = \dfrac{(\lambda p)^k}{k!} e^{-\lambda} e^{\lambda (1 - p)} = \\
+             \displaystyle =  \dfrac{(\lambda p)^k}{k!} e^{-\lambda p} \Longrightarrow         
+        \end{array}
+    \]
+    $\Rightarrow Y \sim \poiss (\lambda p)$
+\end{solution}
+
+% \begin{problem}{(A failing system)}
+%     Consider the chandelier with $n$ electric light bulbs, where every light bulb $i$ burns out independently after random time $T_i \sim \expd (\lambda_i)$. Burnt out light bulb is immediately replaced with an identical new one (it has same life expectancy distribution). Show that the number of burn outs of light bulb $i$ until time $s$ is distributed as $\poiss(\lambda, s)$
+% \end{problem}
+
+% \begin{solution}
+    
+% \end{solution}
+
+\begin{problem}{(Cauchy distribution)}
+    Consider $2D$ real plane $\R^2$. Consider a point with coordinates $(0, d)$. Select an angle $\varphi$ uniformly distributed in $\displaystyle \left[-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right]$. Issue a ray from $(0, d)$ at the angle $\varphi$ to the $y$-axis. Denote the point where it intersects $x$-axis as $(X, 0)$. The distribution of $X$ is called the Caushy distribution. Find its CDF and PDF. Explain, why it does not have an expected value.
+\end{problem}
+
+\begin{solution}
+    {\begin{wrapfigure}{r}{0.4\columnwidth}
+        \vspace*{-1cm}
+        \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+            %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+            
+            %Straight Lines [id:da5796634930899387] 
+            \draw    (200,95.83) -- (200,277.5) ;
+            \draw [shift={(200,92.83)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+            %Straight Lines [id:da7463830929095097] 
+            \draw    (93.67,219.8) -- (340.4,219.8) ;
+            \draw [shift={(343.4,219.8)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+            %Shape: Circle [id:dp702556803357157] 
+            \draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (198,150.9) .. controls (198,149.7) and (198.97,148.73) .. (200.17,148.73) .. controls (201.36,148.73) and (202.33,149.7) .. (202.33,150.9) .. controls (202.33,152.1) and (201.36,153.07) .. (200.17,153.07) .. controls (198.97,153.07) and (198,152.1) .. (198,150.9) -- cycle ;
+            %Straight Lines [id:da37010643508888696] 
+            \draw    (200.17,150.9) -- (271.7,219.93) ;
+            
+            % Text Node
+            \draw (182.13,143.4) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle d$};
+            % Text Node
+            \draw (336.53,227.8) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle x$};
+            % Text Node
+            \draw (265.73,227.8) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle X$};
+            % Text Node
+            \draw (202,159.25) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \varphi $};
+            \end{tikzpicture}            
+    \end{wrapfigure}
+    We can find $X$ in terms of angle $\varphi$ in the following way:
+    \[
+        \tan \varphi = \dfrac{X}{d} \Rightarrow X = d \tan \varphi.  
+    \]
+    Then:
+    \[
+        f(X) = f_\varphi \left(\arctan \left(\dfrac{X}{d}\right)\right)|J|,   
+    \]
+    where $\displaystyle |J| = \dfrac{d}{dX} \arctan \dfrac{X}{d} = \dfrac{1}{d} \cdot \dfrac{1}{1 + \left(\dfrac{X}{d}\right)^2} = \dfrac{d}{d^2 + X^2}$. Thus, 
+    \[
+        f\left(\dfrac{X}{d}\right) = \dfrac{1}{\pi} \dfrac{d}{d^2+X^2} = \dfrac{1}{\pi d \left(1 + \left(\dfrac{X}{d}\right)^2\right)}  
+    \]
+    And CDF:
+    \[
+        F(x) = \int\limits_{-\infty}^x  \dfrac{1}{\pi} \dfrac{d}{d^2+X^2} dX = \dfrac{1}{\pi} \arctan(\dfrac{x}{d}) 
+    \]
+    }
+    \[
+        \E x = \int\limits_{-\infty}^{\infty} \dfrac{xddx}{d^2+x^2} = \dfrac{d}{2} \int\limits_{-\infty}^{\infty} \dfrac{d(x^2+d^2)}{d^2+x^2} = \dfrac{d}{2} \ln |d^2 + x^2|\ \Big|_{-\infty}^{\infty} = \infty.
+    \]  
+\end{solution}
+
+\begin{problem}{}
+    Nikita waits $X \sim \gammad (a, \lambda)$ minutes for the bus to work, and then waits $Y \sim \gammad (b, \lambda)$ minutes for the bus going home, with $X$ and $Y$ independent. Is the ratio $\dfrac{X}{Y}$ is independent of the total wait time $X + Y$.
+\end{problem}
+
+\begin{solution}
+    As we have proved in the classes, that random variables $T = X+Y$ and $W = \dfrac{X}{X+Y}$ are independent,so any function of $W$ is independent of any function of $T$. And we have that $\dfrac{X}{Y}$ is a function of $W$, since:
+    \[
+        \dfrac{X}{Y} = \dfrac{\dfrac{X}{X+Y}}{\dfrac{Y}{X+Y}} = \dfrac{W}{1-W}  
+    \]
+    So $\dfrac{X}{Y}$ is independent of $X+Y$.
+\end{solution}
+
+\begin{problem}{Two subproblems below:}
+    \begin{enumerate}
+        \item Show that if $\E(Y|X) = c$ -- is a constant, then $X $ and $Y$ are uncorrelated. 
+        \item Show by example that it is possible to have uncorrelated $X$ and $Y$ such that $\E(Y|X)$ is not a constant.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item Let's show it by using the Adam's law:
+        \begin{theorema}{(Adam's law)}{}
+            For any r.v.-s $X, Y$:
+            \[
+            \E\left[\E[Y|X]\right] = \E Y
+            \]
+        \end{theorema}
+        Thus we have:
+        \[
+            \E\left[\E[Y|X]\right] = \E Y = \E c = c.
+        \]
+        Also
+        \[
+            \E\left[XY\right] = \E\left[\E\left[XY|X\right]\right] = \E Xc.  
+        \]
+        Now we can compute covariance and correlation furthermore:
+        \[
+            \operatorname{cov} (X, Y) = \E \left[XY\right] - \E X \E Y = \E X c - \E X c = 0  
+        \]
+        We can conclude that correlation is equal to zero either, so these two r.v.-s are uncorrelated.
+        \item Let's take $X \sim \mathcal{N}(0,1)$ and $Y = X^2$. As we can see:
+        \[
+            \cov (X, Y) = \E XY - \E X \E Y = \E X^3 - 0 = 0.  
+        \]
+        the proposed random variables are uncorrelated, but the conditional expectation:
+        \[
+            \E (Y | X) = \E (X^2 | X) = X^2 \neq \text{ const}.
+        \]
+        is not a constant one.
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}{Conditional variance}
+    Show that $\E\left[\left(Y - \E\left[Y|X\right]\right)^2 | X\right] = \E\left[Y^2 | X\right] - \left(\E\left[Y|X\right]\right)^2$, so these two expressions for $\operatorname{Var}(Y|X)$ agree. 
+\end{problem}
+
+\begin{solution}
+    Let's perform some computations:
+    \[
+        \begin{array}{c}
+            \E\left[\left(Y - \E\left[Y|X\right]\right)^2 | X\right]  = \E\left[\left(Y^2 - 2Y\E[Y|X] +  \E\left[Y|X\right]^2\right)| X\right] = \\
+            = \E \left[Y^2 | X\right] - 2 \E\left[Y\E\left[Y|X\right]|X\right] + \E \left[\E\left[Y|X\right]^2 | X\right] = \\
+            = \E \left[Y^2 | X\right] - 2\E\left[Y | X\right] \E\left[Y | X\right] + \E\left[Y|X\right]^2 \E \left[1 | X\right] = \\
+            = \E \left[Y^2 | X\right] - 2\E\left[Y|X\right]^2 + \E\left[Y|X\right]^2 = \\
+            = \E\left[Y^2 | X\right] - \left(\E\left[Y|X\right]\right)^2
+        \end{array}  
+    \]
+\end{solution}
+
+\begin{problem}{}
+    Let $X$ be a random variable with mean $\mu$ and variance $\sigma^2$. Show that:
+    \[
+        \E \left(X - \mu\right)^4 \geq \sigma^4,  
+    \]
+    and use this to show that the kurtosis of $X$ is at least $-2$.
+\end{problem}
+
+\begin{solution}
+    It can be shown in the following manner:
+    \[
+        \E\left[X - \mu\right]^4 - \E^2 \left[X - \mu\right]^2 = \operatorname{Var}^2 \left[X - \mu\right] \geq 0
+    \]
+    As it had been shown:
+    \[
+        \kappa_4 = \dfrac{\E(X- \mu)^4}{\sigma^4} - 3 \geq \dfrac{\sigma^4}{\sigma^4} - 3 = -2.  
+    \]
+\end{solution}
+
+\begin{problem}{}
+   Let $X$ be a discrete random variable whose distinct possible values are $x_0, x_1, \ldots,$ and let $p_k = P(X = x_k)$. The entropy of $X$ is $H(X) = -\sum\limits_{k} p_k\log p_k$.
+   \begin{enumerate}
+    \item Find $H(X)$ for $X \sim \geomd(p)$.
+    \item Let $X$ and $Y$ be i.i.d. discrete random variables. Show that $P(X = Y) \geq 2^{-H(X)}$.
+   \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item    The entropy can be rewritten in the following terms. Let's define $q = 1 - p$:
+    \[
+      H(x) = -\sum\limits_{k} (pq^k) \log (pq^k) = - \log (p) \sum\limits_k pq^k - \log(q) \sum\limits_k kpq^k =   
+    \] 
+    \[
+        = -\log p - \dfrac{q}{p} \log q  
+    \]
+    since the first series is the sum of a $\geomd(p)$ PMF and the second one is the expected value of a $\geomd(p)$ random variable.
+        \item Let $W$ be a random variable taking value $p_k$ with probability $p_k$. By Jensen, $\E(\log (W)) \leq \log (\E W)$, but:
+        \[
+            \E (\log (W)) = \sum\limits_{k} p_k\log(p_k) = - H(X).    
+        \]
+        \[
+            \E W = P(X = y)  ,
+        \]
+        so $-H(X) \leq log P(X=Y)$. Let's take logarithm base 2, thus $P(X = Y) \geq 2^{-H(X)}$.
+    \end{enumerate}
+
+\end{solution}
+
+\begin{problem}{}
+    Let $X_0, X_1, X_2, \ldots $ be a Markov chain. Show that $X_0, X_2, X_4$ is also a Markov chain, and explain why this makes sense intuitively.
+\end{problem}
+
+\begin{solution}
+    Let's go further and prove it for subchain $X_{2n}$ to make it more intuitive. We can define the present time as $2n$, then we know that $X_{2n+1}, X_{2n+2}, \ldots$ is conditionally independent of past $X_0, X_1, \ldots, X_{2n-1}$. Thus:
+    \[
+        P\left(X_{2n+1} = x| \ X_0 = x_0, \ldots X_{2n} = x_{2n}\right) = P\left( X_{2n+1} = x | X_{2n} = x_{2n}\right)
+    \]
+\end{solution}
+\end{document}
